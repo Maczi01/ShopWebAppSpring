@@ -1,0 +1,41 @@
+package com.mati.springshop.payments;
+
+import org.javamoney.moneta.FastMoney;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
+public class FakePaymentServiceTest {
+
+    private static final String PAYMENT_ID = "1";
+    private static final FastMoney MONEY = LocalMoney.of(1_000);
+    private static final PaymentRequest PAYMENT_REQUEST = PaymentRequest.builder()
+            .money(MONEY)
+            .build();
+
+    @Mock
+    private PaymentGenerator paymentGenerator;
+    private Payment payment;
+    @BeforeEach
+    void setUp(){
+        Mockito.when(paymentGenerator.getNext()).thenReturn(PAYMENT_ID);
+        FakePaymentService fakePaymentService = new FakePaymentService(paymentGenerator);
+        payment = fakePaymentService.process(PAYMENT_REQUEST);
+    }
+
+    @Test
+    void shouldAssignIdToCreatedPayment(){
+        Assertions.assertEquals(PAYMENT_ID, payment.getId());
+    }
+
+    @Test
+    void shouldAssignMonet(){
+        Assertions.assertEquals(PAYMENT_REQUEST, payment.getMoney());
+    }
+
+}
