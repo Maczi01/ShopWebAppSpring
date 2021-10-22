@@ -9,6 +9,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDateTime;
+
 @ExtendWith(MockitoExtension.class)
 public class FakePaymentServiceTest {
 
@@ -21,21 +23,32 @@ public class FakePaymentServiceTest {
     @Mock
     private PaymentGenerator paymentGenerator;
     private Payment payment;
+
     @BeforeEach
-    void setUp(){
+    void setUp() {
         Mockito.when(paymentGenerator.getNext()).thenReturn(PAYMENT_ID);
         FakePaymentService fakePaymentService = new FakePaymentService(paymentGenerator);
         payment = fakePaymentService.process(PAYMENT_REQUEST);
     }
 
     @Test
-    void shouldAssignIdToCreatedPayment(){
+    void shouldAssignIdToCreatedPayment() {
         Assertions.assertEquals(PAYMENT_ID, payment.getId());
     }
 
     @Test
-    void shouldAssignMonet(){
-        Assertions.assertEquals(PAYMENT_REQUEST, payment.getMoney());
+    void shouldAssignMonet() {
+        Assertions.assertEquals(MONEY, payment.getMoney());
+    }
+
+    @Test
+    void shouldAssignCorrectTimeStamp() {
+        Assertions.assertNotNull(payment.getTimestamp());
+    }
+
+    @Test
+    void shouldSetStatusAsStarted() {
+        Assertions.assertEquals(PaymentStatus.STARTED, payment.getStatus());
     }
 
 }
