@@ -1,16 +1,21 @@
 package com.mati.springshop.payments;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
-import org.springframework.stereotype.Component;
+import org.springframework.context.MessageSource;
 
-@Component
+import java.util.Locale;
+
+//@Aspect
 @Log
+@RequiredArgsConstructor
 public class PaymentConsoleLogger {
 
-    private static final String LOG_FORMAT = "A new payment of %s has been created";
+    private static final String MESSAGE_KEY = "paymentInfo";
+    public final MessageSource messagesource;
 
     private String createLogEntry(Payment payment) {
-        return String.format(LOG_FORMAT, payment.getMoney());
+        return messagesource.getMessage(MESSAGE_KEY, new String[] {payment.getMoney().toString()}, Locale.getDefault()) ;
     }
 
 }
