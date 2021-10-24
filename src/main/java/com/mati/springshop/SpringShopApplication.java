@@ -17,7 +17,7 @@ import java.util.List;
 @Log
 public class SpringShopApplication {
 
-
+    public static final String BASE_URL = "";
     public static final Product VIDEO_PRODUCT = Product
             .builder()
             .name("Camera")
