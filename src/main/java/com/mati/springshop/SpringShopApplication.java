@@ -17,7 +17,7 @@ import java.util.List;
 @Log
 public class SpringShopApplication {
 
-    public static final String BASE_URL = "";
+    public static final String BASE_PACKAGE = "com.mati.springshop";
     public static final Product VIDEO_PRODUCT = Product
             .builder()
             .name("Camera")
@@ -35,8 +35,8 @@ public class SpringShopApplication {
             .build();
 
     public static void main(String[] args) {
-        try (AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext("com.mati.springshop")) {
-            var shopService = annotationConfigApplicationContext.getBean(ShopService.class);
+        try (AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(BASE_PACKAGE)) {
+            var shopService = applicationContext.getBean(ShopService.class);
             shopService.addProduct(VIDEO_PRODUCT);
             shopService.addProduct(BOOK_PRODUCT);
             log.info(shopService.getProducts(0, 100).toString());
