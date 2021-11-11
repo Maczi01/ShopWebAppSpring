@@ -27,8 +27,8 @@ public class FakePaymentServiceTest {
     @BeforeEach
     void setUp() {
         Mockito.when(paymentGenerator.getNext()).thenReturn(PAYMENT_ID);
-        FakePaymentService fakePaymentService = new FakePaymentService(paymentGenerator);
-        payment = fakePaymentService.process(PAYMENT_REQUEST);
+//        FakePaymentService fakePaymentService = new FakePaymentService(paymentGenerator);
+//        payment = fakePaymentService.process(PAYMENT_REQUEST);
     }
 
     @Test

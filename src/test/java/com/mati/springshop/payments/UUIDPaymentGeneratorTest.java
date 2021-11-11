@@ -3,7 +3,6 @@ package com.mati.springshop.payments;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.yaml.snakeyaml.events.Event;
 
 public class UUIDPaymentGeneratorTest {
 

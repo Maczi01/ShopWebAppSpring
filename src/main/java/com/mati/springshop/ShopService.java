@@ -9,8 +9,10 @@ import com.mati.springshop.payments.PaymentService;
 import com.mati.springshop.products.Product;
 import com.mati.springshop.products.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
+@Transactional
 public class ShopService {
 
     private final OrderService orderService;

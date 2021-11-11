@@ -13,40 +13,41 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.util.List;
 
-//@SpringBootApplication
+@SpringBootApplication
 @Log
 public class SpringShopApplication {
 
-    public static final String BASE_PACKAGE = "com.mati.springshop";
-    public static final Product VIDEO_PRODUCT = Product
-            .builder()
-            .name("Camera")
-            .description("Camera full hd")
-            .type(ProductsType.VIDEO)
-            .price(LocalMoney.of(1000))
-            .build();
-
-    public static final Product BOOK_PRODUCT = Product
-            .builder()
-            .name("Harry Potter")
-            .description("About young boy")
-            .type(ProductsType.BOOK)
-            .price(LocalMoney.of(50))
-            .build();
-
+//    public static final String BASE_PACKAGE = "com.mati.springshop";
+//    public static final Product VIDEO_PRODUCT = Product
+//            .builder()
+//            .name("Camera")
+//            .description("Camera full hd")
+//            .type(ProductsType.VIDEO)
+//            .price(LocalMoney.of(1000))
+//            .build();
+//
+//    public static final Product BOOK_PRODUCT = Product
+//            .builder()
+//            .name("Harry Potter")
+//            .description("About young boy")
+//            .type(ProductsType.BOOK)
+//            .price(LocalMoney.of(50))
+//            .build();
+//
     public static void main(String[] args) {
-        try (AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(BASE_PACKAGE)) {
-            var shopService = applicationContext.getBean(ShopService.class);
-            shopService.addProduct(VIDEO_PRODUCT);
-            shopService.addProduct(BOOK_PRODUCT);
-            log.info(shopService.getProducts(0, 100).toString());
-
-            var order = new Order(List.of(VIDEO_PRODUCT, BOOK_PRODUCT));
-            shopService.placeOrder(order);
-            var payment = shopService.payForOrder(order.getId());
-            shopService.payForOrder(order.getId());
-            log.info(payment.getId());
-        }
+        SpringApplication.run(SpringShopApplication.class);
+//        try (AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(BASE_PACKAGE)) {
+//            var shopService = applicationContext.getBean(ShopService.class);
+//            shopService.addProduct(VIDEO_PRODUCT);
+//            shopService.addProduct(BOOK_PRODUCT);
+//            log.info(shopService.getProducts(0, 100).toString());
+//
+//            var order = new Order(List.of(VIDEO_PRODUCT, BOOK_PRODUCT));
+//            shopService.placeOrder(order);
+//            var payment = shopService.payForOrder(order.getId());
+//            shopService.payForOrder(order.getId());
+//            log.info(payment.getId());
+//        }
 
     }
 
