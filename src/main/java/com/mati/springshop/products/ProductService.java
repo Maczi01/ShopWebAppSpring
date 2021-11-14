@@ -2,6 +2,8 @@ package com.mati.springshop.products;
 
 import com.mati.springshop.common.PagedResult;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 @RequiredArgsConstructor
 public class ProductService {
@@ -13,7 +15,8 @@ public class ProductService {
     }
 
     public PagedResult<Product> getAll(int pageNumber, int pageSize) {
-        return productRepository.findAll(pageNumber, pageSize);
+        Page<Product> productPage = productRepository.findAll(PageRequest.of(pageNumber, pageSize));
+        return new PagedResult<>(productPage.getContent(), pageNumber, productPage.getTotalPages());
     }
 
 }

@@ -1,6 +1,8 @@
 package com.mati.springshop.payments;
 
-public interface PaymentRepository {
+import com.mati.springshop.products.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-    Payment save(Payment payment);
+public interface PaymentRepository  extends JpaRepository<Payment, Long> {
+
 }
