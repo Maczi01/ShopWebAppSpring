@@ -1,14 +1,14 @@
-package com.mati.springshop.common;
+package pl.training.shop.common;
 
-import java.util.ArrayList;
+import lombok.Value;
+
 import java.util.List;
 
+@Value
 public class PagedResult<T> {
 
     List<T> data;
     int pageNumber;
     int totalPages;
 
-    public PagedResult(ArrayList<T> data, int pageNumber, int totalPages) {
-    }
 }

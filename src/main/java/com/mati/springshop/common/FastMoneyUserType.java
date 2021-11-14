@@ -1,5 +1,4 @@
-package com.mati.springshop.common;
-
+package pl.training.shop.common;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
