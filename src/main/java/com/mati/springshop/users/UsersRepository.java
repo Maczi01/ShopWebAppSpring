@@ -1,4 +1,4 @@
-package pl.training.shop.users;
+package com.mati.springshop.users;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

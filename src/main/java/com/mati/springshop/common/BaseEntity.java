@@ -20,20 +20,15 @@ public abstract class BaseEntity {
     protected Long id;
 
     @Override
-    public boolean equals(Object otherObject) {
-        if (this == otherObject) {
-            return true;
-        }
-        if (getClass() != otherObject.getClass()) {
-            return false;
-        }
-        BaseEntity otherEntity = (BaseEntity) otherObject;
-        return this.id != null && Objects.equals(id, otherEntity.id);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BaseEntity that = (BaseEntity) o;
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return 31;
+        return Objects.hash(id);
     }
-
 }

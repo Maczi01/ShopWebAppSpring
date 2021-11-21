@@ -1,4 +1,4 @@
-package pl.training.shop.users;
+package com.mati.springshop.users;
 
 public class UserNotFoundException extends RuntimeException {
 }

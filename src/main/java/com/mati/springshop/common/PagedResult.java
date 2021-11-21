@@ -1,4 +1,4 @@
-package pl.training.shop.common;
+package com.mati.springshop.common;
 
 import lombok.Value;
 

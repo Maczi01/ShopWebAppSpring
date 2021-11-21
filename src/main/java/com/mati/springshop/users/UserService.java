@@ -1,10 +1,10 @@
-package pl.training.shop.users;
+package com.mati.springshop.users;
 
+import com.mati.springshop.common.PagedResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
-import pl.training.shop.common.PagedResult;
 
 @Transactional
 @RequiredArgsConstructor

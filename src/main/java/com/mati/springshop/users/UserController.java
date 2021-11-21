@@ -1,4 +1,4 @@
-package pl.training.shop.users;
+package com.mati.springshop.users;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
